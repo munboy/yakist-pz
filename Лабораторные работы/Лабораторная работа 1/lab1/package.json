@@ -1,0 +1,21 @@
+{
+  "name": "lab1-coffee-shop",
+  "version": "1.0.0",
+  "description": "Лабораторна робота №1: Тестування програмного забезпечення методами білої скриньки",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-strip-types driver.ts",
+    "interactive": "node --experimental-strip-types driver.ts --interactive"
+  },
+  "keywords": [
+    "software-testing",
+    "white-box-testing",
+    "typescript"
+  ],
+  "author": "Поліна Бондаренко",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}

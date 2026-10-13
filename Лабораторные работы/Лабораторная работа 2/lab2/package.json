@@ -1,0 +1,23 @@
+{
+  "name": "lab2-coffee-shop",
+  "version": "1.0.0",
+  "description": "Лабораторна робота №2: Тестування програмного забезпечення методами чорної скриньки та автоматизоване Unit-тестування",
+  "type": "module",
+  "scripts": {
+    "test": "node --test --experimental-strip-types unit.test.ts",
+    "blackbox": "node --experimental-strip-types driver.ts",
+    "interactive": "node --experimental-strip-types driver.ts --interactive"
+  },
+  "keywords": [
+    "software-testing",
+    "black-box-testing",
+    "unit-testing",
+    "typescript"
+  ],
+  "author": "Поліна Бондаренко",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}

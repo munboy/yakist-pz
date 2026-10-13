@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Шпаргалка до захисту ЛР 1 та ЛР 2 | Куроп'ятник О.С.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-page: #f8fafc;
+            --bg-surface: #ffffff;
+            --bg-subtle: #f1f5f9;
+            --border-color: #e2e8f0;
+            --border-hover: #cbd5e1;
+
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-light: #64748b;
+
+            --brand-blue: #0284c7;
+            --brand-blue-bg: #e0f2fe;
+            --brand-green: #059669;
+            --brand-green-bg: #d1fae5;
+            --brand-amber: #d97706;
+            --brand-amber-bg: #fef3c7;
+            --brand-rose: #e11d48;
+            --brand-rose-bg: #ffe4e6;
+            --brand-purple: #7c3aed;
+            --brand-purple-bg: #ede9fe;
+
+            --code-bg: #f8fafc;
+            --code-border: #e2e8f0;
+            --code-text: #1e293b;
+            --radius-lg: 12px;
+            --radius-md: 8px;
+            --radius-sm: 6px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+            font-size: 15px;
+            padding-bottom: 80px;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 16px;
+        }
+
+        .header-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-tag {
+            background: var(--brand-blue-bg);
+            color: var(--brand-blue);
+            font-weight: 700;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        nav.nav-bar {
+            background: var(--bg-surface);
+            border-bottom: 1px solid var(--border-color);
+            padding: 8px 16px;
+            position: sticky;
+            top: 49px;
+            z-index: 90;
+        }
+
+        .nav-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 2px;
+        }
+
+        .nav-inner::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px 14px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.15s ease;
+            flex-shrink: 0;
+            min-height: 38px;
+        }
+
+        .tab-btn:hover {
+            background: #e2e8f0;
+            color: var(--text-main);
+        }
+
+        .tab-btn.active {
+            background: var(--brand-blue);
+            color: #ffffff;
+            border-color: var(--brand-blue);
+            box-shadow: 0 1px 2px rgba(2, 132, 199, 0.2);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 16px auto;
+            padding: 0 16px;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+            animation: fadeIn 0.2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(4px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 18px 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pill {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 999px;
+        }
+
+        .pill-blue {
+            background: var(--brand-blue-bg);
+            color: var(--brand-blue);
+        }
+
+        .pill-green {
+            background: var(--brand-green-bg);
+            color: var(--brand-green);
+        }
+
+        .pill-amber {
+            background: var(--brand-amber-bg);
+            color: var(--brand-amber);
+        }
+
+        .pill-purple {
+            background: var(--brand-purple-bg);
+            color: var(--brand-purple);
+        }
+
+        .alert-box {
+            background: #f0fdf4;
+            border-left: 4px solid var(--brand-green);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 14px 16px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: #14532d;
+        }
+
+        .alert-box.info {
+            background: #f0f9ff;
+            border-left-color: var(--brand-blue);
+            color: #0c4a6e;
+        }
+
+        .alert-box.warning {
+            background: #fffbeb;
+            border-left-color: var(--brand-amber);
+            color: #78350f;
+        }
+
+        .alert-box strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .step-row {
+            display: flex;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .step-row:last-child {
+            border-bottom: none;
+        }
+
+        .step-circle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--brand-blue-bg);
+            color: var(--brand-blue);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 13px;
+        }
+
+        .step-body h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .step-body p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .code-viewer {
+            background: var(--code-bg);
+            border: 1px solid var(--code-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .code-header {
+            background: #f1f5f9;
+            border-bottom: 1px solid var(--code-border);
+            padding: 8px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .code-content {
+            padding: 12px 0;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .code-row {
+            display: flex;
+            padding: 2px 12px;
+            cursor: pointer;
+            transition: background 0.1s;
+        }
+
+        .code-row:hover,
+        .code-row:active {
+            background: #e2e8f0;
+        }
+
+        .code-row.active {
+            background: #e0f2fe;
+            border-left: 3px solid var(--brand-blue);
+        }
+
+        .num-col {
+            width: 32px;
+            text-align: right;
+            padding-right: 12px;
+            color: var(--text-light);
+            user-select: none;
+            flex-shrink: 0;
+            font-size: 12px;
+        }
+
+        .code-text {
+            color: var(--code-text);
+            white-space: pre;
+            flex-grow: 1;
+        }
+
+        .syn-kw {
+            color: #d946ef;
+            font-weight: 600;
+        }
+
+        .syn-fn {
+            color: #0284c7;
+            font-weight: 600;
+        }
+
+        .syn-str {
+            color: #16a34a;
+        }
+
+        .syn-num {
+            color: #ea580c;
+        }
+
+        .syn-cmt {
+            color: #94a3b8;
+            font-style: italic;
+        }
+
+        .line-card {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            transition: all 0.15s;
+        }
+
+        .line-card.highlight {
+            background: #ffffff;
+            border-color: var(--brand-blue);
+            box-shadow: 0 2px 8px rgba(2, 132, 199, 0.12);
+        }
+
+        .line-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .line-badge {
+            font-family: 'Fira Code', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--brand-blue);
+            background: var(--brand-blue-bg);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .op-badge {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--brand-purple);
+            background: var(--brand-purple-bg);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .line-card h5 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .line-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .trap-callout {
+            margin-top: 8px;
+            background: #fff1f2;
+            border-left: 3px solid var(--brand-rose);
+            padding: 8px 12px;
+            border-radius: 0 6px 6px 0;
+            font-size: 12.5px;
+            color: #9f1239;
+        }
+
+        .trap-callout strong {
+            color: #881337;
+        }
+
+        .qa-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+
+        .qa-trigger {
+            padding: 14px 16px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-main);
+            background: #ffffff;
+            min-height: 48px;
+        }
+
+        .qa-trigger:hover,
+        .qa-trigger:active {
+            background: #f8fafc;
+        }
+
+        .qa-content {
+            padding: 14px 16px;
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            background: #f8fafc;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .qa-content strong {
+            color: var(--text-main);
+        }
+
+        .kbd-inline {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            padding: 1px 6px;
+            font-family: 'Fira Code', monospace;
+            font-size: 12px;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .grid-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .sub-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .sub-btn {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .sub-btn.active {
+            background: var(--brand-blue);
+            color: #ffffff;
+            border-color: var(--brand-blue);
+        }
+
+        @media (max-width: 768px) {
+            .grid-split {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                font-size: 14.5px;
+            }
+
+            header h1 {
+                font-size: 14px;
+            }
+
+            .card {
+                padding: 14px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div class="brand-box">
+                <span class="badge-tag">Шпаргалка</span>
+                <h1>Захист ЛР 1 та ЛР 2 (Куроп'ятник О.С.)</h1>
+            </div>
+            <span style="font-size: 12px; color: var(--text-light); font-weight: 500;">Світла тема</span>
+        </div>
+    </header>
+
+    <nav class="nav-bar">
+        <div class="nav-inner">
+            <button class="tab-btn active" onclick="showTab('tab-process')">🎓 Як проходить захист</button>
+            <button class="tab-btn" onclick="showTab('tab-tokens')">☕ Функція посимвольного аналізу</button>
+            <button class="tab-btn" onclick="showTab('tab-drivers')">🚗 Драйвери (driver.ts розбір коду)</button>
+            <button class="tab-btn" onclick="showTab('tab-qa')">⚡ 10 Готових відповідей</button>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- ============================================================= -->
+        <!-- TAB 1: ЯК ПРОХОДИТЬ ЗАХИСТ                                    -->
+        <!-- ============================================================= -->
+        <section id="tab-process" class="tab-pane active">
+            <div class="alert-box">
+                <strong>Чи читає викладачка звіт, чи тобі потрібно читати звіт?</strong>
+                Вона <u>НЕ читає звіт за тебе</u> і <u>НЕ змушує тебе його читати</u>! Звіт — це завантажений документ.
+                Захист — це живий діалог: ти транслюєш екран (VS Code + термінал), запускаєш тести і відповідаєш на її
+                конкретні запитання по коду, операторах та таблицях.
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">📋 4 Кроки захисту на практиці</span>
+                    <span class="pill pill-blue">Порядок дій</span>
+                </div>
+
+                <div class="step-row">
+                    <div class="step-circle">1</div>
+                    <div class="step-body">
+                        <h4>Демонстрація запуску в терміналі</h4>
+                        <p>Вона каже: <em>«Покажіть запуск тестів»</em>. Запускаєш <span class="kbd-inline">npm
+                                test</span>. Всі тести проходять (100% OK).</p>
+                    </div>
+                </div>
+
+                <div class="step-row">
+                    <div class="step-circle">2</div>
+                    <div class="step-body">
+                        <h4>Пояснення структури коду та операторів</h4>
+                        <p>Вона просить: <em>«Поясніть, що робить ця функція, які параметри, де Оператори 1, 2,
+                                3...»</em>. Показуєш вхідні аргументи, Guard Clause, цикл і складені умови.</p>
+                    </div>
+                </div>
+
+                <div class="step-row">
+                    <div class="step-circle">3</div>
+                    <div class="step-body">
+                        <h4>Захист таблиць тестового покриття</h4>
+                        <p>Питання: <em>«Покажіть таблицю покриття умов. Чому саме стільки тестів?»</em>. Показуєш
+                            таблицю у звіті: кожна елементарна умова набула True та False.</p>
+                    </div>
+                </div>
+
+                <div class="step-row">
+                    <div class="step-circle">4</div>
+                    <div class="step-body">
+                        <h4>Контрольні теоретичні запитання</h4>
+                        <p>1-2 запитання за лекціями: <em>«Що таке драйвер? Чим відрізняється покриття умов від покриття
+                                рішень?»</em>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-split">
+                <div class="alert-box warning">
+                    <strong>❌ Чого НЕ робити</strong>
+                    Не починай зачитувати вступ чи мету роботи з папірця. Вона одразу перерве: <em>«Покажіть ваш код і
+                        як ви його протестували»</em>.
+                </div>
+                <div class="alert-box info">
+                    <strong>💡 Лайфхак для спокійного захисту</strong>
+                    Тримай заздалегідь відкритими: 1) VS Code з кодом; 2) Термінал з командою; 3) Звіт на таблицях
+                    покриття.
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================= -->
+        <!-- TAB 2: countCoffeeOrderTokens                                 -->
+        <!-- ============================================================= -->
+        <section id="tab-tokens" class="tab-pane">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">☕ Функція: countCoffeeOrderTokens</span>
+                    <span class="pill pill-purple">Повний розбір</span>
+                </div>
+                <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px;">
+                    <strong>Суть функції:</strong> Здійснює посимвольний синтаксичний розбір рядка чеку (без regex чи
+                    split). Підраховує кількість слів-напоїв, які задовольняють двом критеріям:
+                    <strong>1) довжина $\ge minDrinkLength$</strong>; <strong>2) перша літера збігається з
+                        <code>drinkPrefix</code></strong> (без урахування регістру).
+                </p>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <span class="kbd-inline">receiptText: string (текст чеку)</span>
+                    <span class="kbd-inline">drinkPrefix: string (початкова літера)</span>
+                    <span class="kbd-inline">minDrinkLength: number (мін. довжина)</span>
+                    <span class="kbd-inline" style="color: var(--brand-green);">Вихід: number (кількість або -1)</span>
+                </div>
+            </div>
+
+            <div class="code-viewer">
+                <div class="code-header">
+                    <span>lab1/functions.ts (рядки 40–75)</span>
+                    <span style="font-size: 11px; color: var(--brand-blue);">Натисніть на рядок для перегляду</span>
+                </div>
+                <div class="code-content">
+                    <div class="code-row" onclick="focusLine(40)"><span class="num-col">40</span><span
+                            class="code-text"><span class="syn-kw">export function</span> <span
+                                class="syn-fn">countCoffeeOrderTokens</span>(</span></div>
+                    <div class="code-row" onclick="focusLine(41)"><span class="num-col">41</span><span
+                            class="code-text"> receiptText: <span class="syn-kw">string</span>,</span></div>
+                    <div class="code-row" onclick="focusLine(42)"><span class="num-col">42</span><span
+                            class="code-text"> drinkPrefix: <span class="syn-kw">string</span>,</span></div>
+                    <div class="code-row" onclick="focusLine(43)"><span class="num-col">43</span><span
+                            class="code-text"> minDrinkLength: <span class="syn-kw">number</span></span></div>
+                    <div class="code-row" onclick="focusLine(44)"><span class="num-col">44</span><span
+                            class="code-text">): <span class="syn-kw">number</span> {</span></div>
+                    <div class="code-row" onclick="focusLine(46)"><span class="num-col">46</span><span
+                            class="code-text"> <span class="syn-kw">if</span> (minDrinkLength &lt;= <span
+                                class="syn-num">0</span>) {</span></div>
+                    <div class="code-row" onclick="focusLine(47)"><span class="num-col">47</span><span
+                            class="code-text"> <span class="syn-kw">return</span> -<span class="syn-num">1</span>; <span
+                                class="syn-cmt">// Оператор 2</span></span></div>
+                    <div class="code-row" onclick="focusLine(48)"><span class="num-col">48</span><span
+                            class="code-text"> }</span></div>
+                    <div class="code-row" onclick="focusLine(50)"><span class="num-col">50</span><span
+                            class="code-text"> <span class="syn-kw">let</span> matchCount = <span
+                                class="syn-num">0</span>; <span class="syn-cmt">// Оператор 3</span></span></div>
+                    <div class="code-row" onclick="focusLine(51)"><span class="num-col">51</span><span
+                            class="code-text"> <span class="syn-kw">let</span> currentDrink = <span
+                                class="syn-str">""</span>; <span class="syn-cmt">// Оператор 4</span></span></div>
+                    <div class="code-row" onclick="focusLine(52)"><span class="num-col">52</span><span
+                            class="code-text"> <span class="syn-kw">const</span> targetPrefix = drinkPrefix.<span
+                                class="syn-fn">toLowerCase</span>(); <span class="syn-cmt">// Оператор 5</span></span>
+                    </div>
+                    <div class="code-row" onclick="focusLine(55)"><span class="num-col">55</span><span
+                            class="code-text"> <span class="syn-kw">for</span> (<span class="syn-kw">let</span> i =
+                            <span class="syn-num">0</span>; i &lt;= receiptText.length; i++) {</span></div>
+                    <div class="code-row" onclick="focusLine(57)"><span class="num-col">57</span><span
+                            class="code-text"> <span class="syn-kw">const</span> isEnd = (i === receiptText.length) ||
+                            receiptText[i] === <span class="syn-str">' '</span> || receiptText[i] === <span
+                                class="syn-str">','</span>;</span></div>
+                    <div class="code-row" onclick="focusLine(59)"><span class="num-col">59</span><span
+                            class="code-text"> <span class="syn-kw">if</span> (!isEnd) { <span class="syn-cmt">//
+                                Оператор 8</span></span></div>
+                    <div class="code-row" onclick="focusLine(60)"><span class="num-col">60</span><span
+                            class="code-text"> currentDrink += receiptText[i]; <span class="syn-cmt">// Оператор
+                                9</span></span></div>
+                    <div class="code-row" onclick="focusLine(61)"><span class="num-col">61</span><span
+                            class="code-text"> } <span class="syn-kw">else</span> {</span></div>
+                    <div class="code-row" onclick="focusLine(63)"><span class="num-col">63</span><span
+                            class="code-text"> <span class="syn-kw">if</span> (currentDrink.length &gt; <span
+                                class="syn-num">0</span>) { <span class="syn-cmt">// Оператор 11</span></span></div>
+                    <div class="code-row" onclick="focusLine(64)"><span class="num-col">64</span><span
+                            class="code-text"> <span class="syn-kw">const</span> firstChar = currentDrink[<span
+                                class="syn-num">0</span>].<span class="syn-fn">toLowerCase</span>(); <span
+                                class="syn-cmt">// Оператор 12</span></span></div>
+                    <div class="code-row" onclick="focusLine(66)"><span class="num-col">66</span><span
+                            class="code-text"> <span class="syn-kw">if</span> (currentDrink.length &gt;= minDrinkLength
+                            &amp;&amp; firstChar === targetPrefix) {</span></div>
+                    <div class="code-row" onclick="focusLine(67)"><span class="num-col">67</span><span
+                            class="code-text"> matchCount++; <span class="syn-cmt">// Оператор 14</span></span></div>
+                    <div class="code-row" onclick="focusLine(68)"><span class="num-col">68</span><span
+                            class="code-text"> }</span></div>
+                    <div class="code-row" onclick="focusLine(69)"><span class="num-col">69</span><span
+                            class="code-text"> currentDrink = <span class="syn-str">""</span>; <span class="syn-cmt">//
+                                Оператор 15</span></span></div>
+                    <div class="code-row" onclick="focusLine(70)"><span class="num-col">70</span><span
+                            class="code-text"> }</span></div>
+                    <div class="code-row" onclick="focusLine(71)"><span class="num-col">71</span><span
+                            class="code-text"> }</span></div>
+                    <div class="code-row" onclick="focusLine(72)"><span class="num-col">72</span><span
+                            class="code-text"> }</span></div>
+                    <div class="code-row" onclick="focusLine(74)"><span class="num-col">74</span><span
+                            class="code-text"> <span class="syn-kw">return</span> matchCount; <span class="syn-cmt">//
+                                Оператор 16</span></span></div>
+                    <div class="code-row" onclick="focusLine(75)"><span class="num-col">75</span><span
+                            class="code-text">}</span></div>
+                </div>
+            </div>
+
+            <div id="card-46" class="line-card">
+                <div class="line-card-header">
+                    <span class="line-badge">Рядки 46–48</span>
+                    <span class="op-badge">Оператори 1 & 2</span>
+                </div>
+                <h5>Перевірка валідності вхідних даних (Guard Clause)</h5>
+                <p>Якщо <code>minDrinkLength &lt;= 0</code>, функція повертає код помилки <code>-1</code>.</p>
+            </div>
+
+            <div id="card-50" class="line-card">
+                <div class="line-card-header">
+                    <span class="line-badge">Рядки 50–52</span>
+                    <span class="op-badge">Оператори 3, 4, 5</span>
+                </div>
+                <h5>Ініціалізація змінних та регістронезалежність</h5>
+                <p>• <code>matchCount = 0</code> — лічильник знайдених напоїв.<br>
+                    • <code>currentDrink = ""</code> — буфер для накопичення поточного слова.<br>
+                    • <code>targetPrefix = drinkPrefix.toLowerCase()</code> — приведення шуканої літери до нижнього
+                    регістру!</p>
+                <div class="trap-callout">
+                    <strong>Чому 'l' знаходить 'Latte'?</strong> Бо префікс переведено в <code>toLowerCase()</code>
+                    (стало 'l'), і першу літеру 'L' переведено в <code>toLowerCase()</code> (стало 'l'). Вони
+                    збігаються!
+                </div>
+            </div>
+
+            <div id="card-55" class="line-card">
+                <div class="line-card-header">
+                    <span class="line-badge">Рядки 55–58</span>
+                    <span class="op-badge">Оператори 6 & 7</span>
+                </div>
+                <h5>Цикл та виявлення роздільників (isEnd)</h5>
+                <p>Цикл ітерується від <code>0</code> до <code>receiptText.length</code> включно! Вираз
+                    <code>isEnd</code> перевіряє: 1) кінець рядка (<code>i === length</code>); 2) пробіл
+                    (<code>' '</code>); 3) кому (<code>','</code>).</p>
+                <div class="trap-callout">
+                    <strong>⚠️ ГОЛОВНА ПАСТКА: «Чому в циклі i &lt;= length, а не &lt; ?»</strong><br>
+                    <strong>Відповідь:</strong> Тому що останній напій у чеку не має після себе коми чи пробілу! На
+                    позиції <code>i === length</code> умова <code>isEnd</code> стає True, і ми обробляємо останнє слово
+                    перед завершенням циклу.
+                </div>
+            </div>
+
+            <div id="card-59" class="line-card">
+                <div class="line-card-header">
+                    <span class="line-badge">Рядки 59–61</span>
+                    <span class="op-badge">Оператори 8 & 9</span>
+                </div>
+                <h5>Накопичення літер у слово</h5>
+                <p>Якщо <code>!isEnd</code> (звичайний символ), ми конкатенуємо його:
+                    <code>currentDrink += receiptText[i]</code>.</p>
+            </div>
+
+            <div id="card-63" class="line-card">
+                <div class="line-card-header">
+                    <span class="line-badge">Рядки 63–71</span>
+                    <span class="op-badge">Оператори 10–15</span>
+                </div>
+                <h5>Перевірка слова та скидання буфера</h5>
+                <p>Коли зустрівся роздільник і <code>currentDrink.length &gt; 0</code>:<br>
+                    1. <code>firstChar = currentDrink[0].toLowerCase()</code>.<br>
+                    2. <strong>Складена умова:</strong> довжина слова $\ge minDrinkLength$ І
+                    <code>firstChar === targetPrefix</code> ➔ <code>matchCount++</code>.<br>
+                    3. Очищуємо буфер <code>currentDrink = ""</code> для наступного слова.</p>
+            </div>
+
+            <div id="card-74" class="line-card">
+                <div class="line-card-header">
+                    <span class="line-badge">Рядки 74–75</span>
+                    <span class="op-badge">Оператор 16</span>
+                </div>
+                <h5>Повернення результату</h5>
+                <p>Повертає загальну кількість знайдених напоїв.</p>
+            </div>
+        </section>
+
+        <!-- ============================================================= -->
+        <!-- TAB 3: ДРАЙВЕРИ (driver.ts) З РОЗБОРОМ КОДУ                   -->
+        <!-- ============================================================= -->
+        <section id="tab-drivers" class="tab-pane">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">🚗 Драйвери тестування (driver.ts)</span>
+                    <span class="pill pill-blue">Построчний розбір коду</span>
+                </div>
+                <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">
+                    <strong>Що таке Драйвер (*Test Driver*):</strong> Спеціальна керівна програма верхнього рівня,
+                    розроблена для тестування функцій методом <em>знизу вгору (Bottom-Up)</em>. Драйвер підставляє
+                    тестові вхідні дані у функцію, викликає її, отримує фактичний результат і порівнює з еталоном.
+                    <em>(Заглушка не потрібна, бо наші функції автономні й не викликають зовнішніх систем).</em>
+                </p>
+            </div>
+
+            <!-- Sub Navigation to switch between Lab 1 and Lab 2 Driver -->
+            <div class="sub-nav">
+                <button class="sub-btn active" onclick="switchDriverView('driver-lab1', this)">Драйвер ЛР 1
+                    (lab1/driver.ts)</button>
+                <button class="sub-btn" onclick="switchDriverView('driver-lab2', this)">Драйвер ЛР 2
+                    (lab2/driver.ts)</button>
+            </div>
+
+            <!-- ================= LAB 1 DRIVER ================= -->
+            <div id="driver-lab1">
+                <div class="code-viewer">
+                    <div class="code-header">
+                        <span>lab1/driver.ts (Повний код файлу)</span>
+                        <span style="color: var(--brand-blue);">Клацніть на рядок</span>
+                    </div>
+                    <div class="code-content">
+                        <div class="code-row" onclick="focusDriverLine('d1-import')"><span class="num-col">1</span><span
+                                class="code-text"><span class="syn-cmt">// Драйвер тестування функцій
+                                    кав'ярні</span></span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-import')"><span class="num-col">3</span><span
+                                class="code-text"><span class="syn-kw">import</span> * <span class="syn-kw">as</span>
+                                readline <span class="syn-kw">from</span> <span
+                                    class="syn-str">'node:readline'</span>;</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-import')"><span class="num-col">4</span><span
+                                class="code-text"><span class="syn-kw">import</span> { calculateCoffeeDiscount,
+                                countCoffeeOrderTokens } <span class="syn-kw">from</span> <span
+                                    class="syn-str">'./functions.ts'</span>;</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-import')"><span class="num-col">5</span><span
+                                class="code-text"><span class="syn-kw">import</span> { discountTests, tokenTests } <span
+                                    class="syn-kw">from</span> <span class="syn-str">'./tests.ts'</span>;</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-disc')"><span
+                                class="num-col">9</span><span class="code-text"><span class="syn-kw">function</span>
+                                <span class="syn-fn">runDiscountTests</span>(tests: DiscountTestCase[]): <span
+                                    class="syn-kw">number</span> {</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-disc')"><span
+                                class="num-col">11</span><span class="code-text"> <span class="syn-kw">let</span> passed
+                                = <span class="syn-num">0</span>;</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-disc')"><span
+                                class="num-col">13</span><span class="code-text"> <span class="syn-kw">for</span> (<span
+                                    class="syn-kw">const</span> t <span class="syn-kw">of</span> tests) {</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-disc')"><span
+                                class="num-col">14</span><span class="code-text"> <span class="syn-kw">const</span>
+                                actual = calculateCoffeeDiscount(...t.input);</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-disc')"><span
+                                class="num-col">15</span><span class="code-text"> <span class="syn-kw">const</span> ok =
+                                actual === t.expected;</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-disc')"><span
+                                class="num-col">16</span><span class="code-text"> <span class="syn-kw">if</span> (ok)
+                                passed++;</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-disc')"><span
+                                class="num-col">19</span><span class="code-text"> console.log(`[${t.id}] ${t.method}:
+                                факт: ${actual} [${ok ? 'OK' : 'FAIL'}]`);</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-disc')"><span
+                                class="num-col">20</span><span class="code-text"> }</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-disc')"><span
+                                class="num-col">23</span><span class="code-text"> <span class="syn-kw">return</span>
+                                passed;</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-tokens')"><span
+                                class="num-col">27</span><span class="code-text"><span class="syn-kw">function</span>
+                                <span class="syn-fn">runTokenTests</span>(tests: TokenTestCase[]): <span
+                                    class="syn-kw">number</span> {</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-tokens')"><span
+                                class="num-col">29</span><span class="code-text"> <span class="syn-kw">let</span> passed
+                                = <span class="syn-num">0</span>;</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-tokens')"><span
+                                class="num-col">31</span><span class="code-text"> <span class="syn-kw">for</span> (<span
+                                    class="syn-kw">const</span> t <span class="syn-kw">of</span> tests) {</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-tokens')"><span
+                                class="num-col">32</span><span class="code-text"> <span class="syn-kw">const</span>
+                                actual = countCoffeeOrderTokens(t.receipt, t.prefix, t.minLen);</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-tokens')"><span
+                                class="num-col">33</span><span class="code-text"> <span class="syn-kw">const</span> ok =
+                                actual === t.expected;</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-tokens')"><span
+                                class="num-col">34</span><span class="code-text"> <span class="syn-kw">if</span> (ok)
+                                passed++;</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-tokens')"><span
+                                class="num-col">37</span><span class="code-text"> console.log(`[${t.id}] факт: ${actual}
+                                [${ok ? 'OK' : 'FAIL'}]`);</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-tokens')"><span
+                                class="num-col">38</span><span class="code-text"> }</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-run-tokens')"><span
+                                class="num-col">41</span><span class="code-text"> <span class="syn-kw">return</span>
+                                passed;</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-interactive')"><span
+                                class="num-col">45</span><span class="code-text"><span class="syn-kw">async
+                                    function</span> <span class="syn-fn">runInteractiveMode</span>(): Promise&lt;<span
+                                    class="syn-kw">void</span>&gt; {</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-interactive')"><span
+                                class="num-col">46</span><span class="code-text"> <span class="syn-kw">const</span> rl =
+                                readline.createInterface({ input: process.stdin, output: process.stdout });</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-interactive')"><span
+                                class="num-col">51</span><span class="code-text"> <span class="syn-kw">const</span> ask
+                                = (q) =&gt; <span class="syn-kw">new</span> Promise((res) =&gt; rl.question(q,
+                                res));</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-interactive')"><span
+                                class="num-col">56</span><span class="code-text"> <span class="syn-kw">while</span>
+                                (<span class="syn-kw">true</span>) {</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-interactive')"><span
+                                class="num-col">57</span><span class="code-text"> <span class="syn-cmt">// Вибір: 1 -
+                                    calculateCoffeeDiscount, 2 - countCoffeeOrderTokens, 0 - вихід</span></span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-interactive')"><span
+                                class="num-col">62</span><span class="code-text"> <span class="syn-kw">const</span>
+                                choice = (<span class="syn-kw">await</span> ask(<span class="syn-str">"Ваш вибір:
+                                    "</span>)).trim();</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-interactive')"><span
+                                class="num-col">64</span><span class="code-text"> <span class="syn-kw">if</span> (choice
+                                === <span class="syn-str">'0'</span>) <span class="syn-kw">break</span>;</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-interactive')"><span
+                                class="num-col">82</span><span class="code-text"> <span class="syn-kw">else if</span>
+                                (choice === <span class="syn-str">'2'</span>) {</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-interactive')"><span
+                                class="num-col">83</span><span class="code-text"> <span class="syn-kw">const</span>
+                                receipt = <span class="syn-kw">await</span> ask(<span class="syn-str">"Рядок чеку:
+                                    "</span>);</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-interactive')"><span
+                                class="num-col">84</span><span class="code-text"> <span class="syn-kw">const</span>
+                                prefix = <span class="syn-kw">await</span> ask(<span class="syn-str">"Початкова літера:
+                                    "</span>);</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-interactive')"><span
+                                class="num-col">85</span><span class="code-text"> <span class="syn-kw">const</span>
+                                minLen = parseInt(<span class="syn-kw">await</span> ask(<span class="syn-str">"Мін.
+                                    довжина: "</span>), <span class="syn-num">10</span>);</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-interactive')"><span
+                                class="num-col">88</span><span class="code-text"> <span class="syn-kw">const</span> res
+                                = countCoffeeOrderTokens(receipt, prefix, minLen);</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-interactive')"><span
+                                class="num-col">89</span><span class="code-text"> console.log(`Результат:
+                                ${res}`);</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-interactive')"><span
+                                class="num-col">90</span><span class="code-text"> }</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-interactive')"><span
+                                class="num-col">93</span><span class="code-text"> }</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-interactive')"><span
+                                class="num-col">95</span><span class="code-text"> rl.close();</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-main')"><span class="num-col">99</span><span
+                                class="code-text"><span class="syn-kw">async function</span> <span
+                                    class="syn-fn">main</span>(): Promise&lt;<span class="syn-kw">void</span>&gt;
+                                {</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-main')"><span class="num-col">100</span><span
+                                class="code-text"> <span class="syn-kw">const</span> isInteractive =
+                                process.argv.includes(<span class="syn-str">'--interactive'</span>) ||
+                                process.argv.includes(<span class="syn-str">'-i'</span>);</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-main')"><span class="num-col">102</span><span
+                                class="code-text"> <span class="syn-kw">if</span> (isInteractive) <span
+                                    class="syn-kw">await</span> runInteractiveMode();</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-main')"><span class="num-col">104</span><span
+                                class="code-text"> <span class="syn-kw">else</span> { runDiscountTests(discountTests);
+                                runTokenTests(tokenTests); }</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-main')"><span class="num-col">108</span><span
+                                class="code-text">}</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d1-main')"><span class="num-col">110</span><span
+                                class="code-text">main();</span></div>
+                    </div>
+                </div>
+
+                <!-- Driver Lab 1 Line Explanations -->
+                <div id="card-d1-import" class="line-card">
+                    <div class="line-card-header">
+                        <span class="line-badge">Рядки 1–6</span>
+                        <span class="op-badge">Імпорти та залежності</span>
+                    </div>
+                    <h5>Підключення системних та тестових модулів</h5>
+                    <p>• <code>readline</code> — стандартний модуль Node.js для асинхронного читання введення з
+                        терміналу (клавіатури).<br>
+                        • <code>calculateCoffeeDiscount</code> та <code>countCoffeeOrderTokens</code> — наші тестовані
+                        функції з файлу <code>functions.ts</code>.<br>
+                        • <code>discountTests</code> та <code>tokenTests</code> — масиви структурованих тестових
+                        випадків з файлу <code>tests.ts</code>.</p>
+                </div>
+
+                <div id="card-d1-run-disc" class="line-card">
+                    <div class="line-card-header">
+                        <span class="line-badge">Рядки 9–24</span>
+                        <span class="op-badge">runDiscountTests()</span>
+                    </div>
+                    <h5>Автоматичний прогін тестів функції знижки</h5>
+                    <p>Проходить циклом <code>for (const t of tests)</code> по всіх тестах. Викликає функцію через
+                        spread-оператор <code>calculateCoffeeDiscount(...t.input)</code>. Порівнює повернене значення
+                        <code>actual</code> з очікуваним <code>t.expected</code>. Якщо збігається — збільшує
+                        <code>passed++</code> і виводить зелений статус <code>[OK]</code>.</p>
+                </div>
+
+                <div id="card-d1-run-tokens" class="line-card">
+                    <div class="line-card-header">
+                        <span class="line-badge">Рядки 27–42</span>
+                        <span class="op-badge">runTokenTests()</span>
+                    </div>
+                    <h5>Автоматичний прогін тестів посимвольного аналізу</h5>
+                    <p>Передає в <code>countCoffeeOrderTokens(receipt, prefix, minLen)</code> вхідні параметри кожного
+                        тесту. Виводить у термінал вхідні дані, очікуваний та фактичний результат. Рахує відсоток
+                        успішності (100%).</p>
+                </div>
+
+                <div id="card-d1-interactive" class="line-card">
+                    <div class="line-card-header">
+                        <span class="line-badge">Рядки 45–96</span>
+                        <span class="op-badge">runInteractiveMode()</span>
+                    </div>
+                    <h5>Діалоговий режим ручного введення (Консольне меню)</h5>
+                    <p>Створює інтерфейс <code>readline</code>. Функція-помічник <code>ask()</code> загортає опитування
+                        в <code>Promise</code>, дозволяючи писати зручний <code>await ask(...)</code>. Цикл
+                        <code>while(true)</code> пропонує вибір: <strong>1</strong> — перевірка знижки,
+                        <strong>2</strong> — посимвольний аналіз чеку, <strong>0</strong> — вихід. Дозволяє протестувати
+                        будь-який рядок наживо на парі.</p>
+                </div>
+
+                <div id="card-d1-main" class="line-card">
+                    <div class="line-card-header">
+                        <span class="line-badge">Рядки 99–110</span>
+                        <span class="op-badge">main() — Точка входу</span>
+                    </div>
+                    <h5>Обробка аргументів командного рядка</h5>
+                    <p>Аналізує масив <code>process.argv</code>. Якщо користувач запустив скрипт із прапорцем
+                        <code>-i</code> або <code>--interactive</code> ➔ запускається <code>runInteractiveMode()</code>.
+                        Якщо прапорця немає (звичайний <code>npm test</code>) ➔ автоматично запускаються обидва тестові
+                        набори без затримки.</p>
+                </div>
+            </div>
+
+            <!-- ================= LAB 2 DRIVER ================= -->
+            <div id="driver-lab2" style="display: none;">
+                <div class="code-viewer">
+                    <div class="code-header">
+                        <span>lab2/driver.ts (Чорна скринька)</span>
+                        <span style="color: var(--brand-green);">5 Методів тест-дизайну</span>
+                    </div>
+                    <div class="code-content">
+                        <div class="code-row" onclick="focusDriverLine('d2-suites')"><span class="num-col">5</span><span
+                                class="code-text"><span class="syn-kw">import</span> { equivalencePartitioningTests,
+                                boundaryValueTests, errorGuessingTests, causeEffectTests, tokenBlackBoxTests } <span
+                                    class="syn-kw">from</span> <span class="syn-str">'./tests.ts'</span>;</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d2-run-suite')"><span
+                                class="num-col">14</span><span class="code-text"><span class="syn-kw">function</span>
+                                <span class="syn-fn">runTestSuite</span>(suiteName: <span class="syn-kw">string</span>,
+                                tests: BlackBoxTestCase[]): <span class="syn-kw">number</span> {</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d2-run-suite')"><span
+                                class="num-col">18</span><span class="code-text"> <span class="syn-kw">for</span> (<span
+                                    class="syn-kw">const</span> t <span class="syn-kw">of</span> tests) {</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d2-run-suite')"><span
+                                class="num-col">19</span><span class="code-text"> <span class="syn-kw">const</span>
+                                actual = calculateCoffeeDiscount(...t.input);</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d2-run-suite')"><span
+                                class="num-col">20</span><span class="code-text"> <span class="syn-kw">const</span> ok =
+                                actual === t.expected;</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d2-run-suite')"><span
+                                class="num-col">24</span><span class="code-text"> console.log(`[${t.id}]
+                                ${t.description} -&gt; факт: ${actual} [${ok ? 'OK' : 'FAIL'}]`);</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d2-run-suite')"><span
+                                class="num-col">25</span><span class="code-text"> }</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d2-main')"><span class="num-col">107</span><span
+                                class="code-text"> <span class="syn-kw">const</span> p1 = runTestSuite(<span
+                                    class="syn-str">"Метод 1: Еквівалентне розбиття"</span>,
+                                equivalencePartitioningTests);</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d2-main')"><span class="num-col">108</span><span
+                                class="code-text"> <span class="syn-kw">const</span> p2 = runTestSuite(<span
+                                    class="syn-str">"Метод 2: Аналіз граничних значень"</span>,
+                                boundaryValueTests);</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d2-main')"><span class="num-col">109</span><span
+                                class="code-text"> <span class="syn-kw">const</span> p3 = runTestSuite(<span
+                                    class="syn-str">"Метод 3: Припущення про помилку"</span>,
+                                errorGuessingTests);</span></div>
+                        <div class="code-row" onclick="focusDriverLine('d2-main')"><span class="num-col">110</span><span
+                                class="code-text"> <span class="syn-kw">const</span> p4 = runTestSuite(<span
+                                    class="syn-str">"Метод 4: Функціональні діаграми"</span>, causeEffectTests);</span>
+                        </div>
+                        <div class="code-row" onclick="focusDriverLine('d2-main')"><span class="num-col">111</span><span
+                                class="code-text"> <span class="syn-kw">const</span> p5 = runTokenTestSuite(<span
+                                    class="syn-str">"Тести countCoffeeOrderTokens"</span>, tokenBlackBoxTests);</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="card-d2-suites" class="line-card">
+                    <div class="line-card-header">
+                        <span class="line-badge">Рядки 5–12</span>
+                        <span class="op-badge">5 Методів чорної скриньки</span>
+                    </div>
+                    <h5>Модульний поділ тестів у ЛР 2</h5>
+                    <p>На відміну від ЛР 1 (де тестувався внутрішній код білою скринькою), у драйвері ЛР 2 тести
+                        розділені суворо за методами з лекції 4 та методички:
+                        <br>1) <code>equivalencePartitioningTests</code> — еквівалентні класи;
+                        <br>2) <code>boundaryValueTests</code> — граничні значення;
+                        <br>3) <code>errorGuessingTests</code> — припущення про типові баги;
+                        <br>4) <code>causeEffectTests</code> — причинно-наслідкові графи;
+                        <br>5) <code>tokenBlackBoxTests</code> — функціональні тести посимвольного аналізу.
+                    </p>
+                </div>
+
+                <div id="card-d2-main" class="line-card">
+                    <div class="line-card-header">
+                        <span class="line-badge">Рядки 101–118</span>
+                        <span class="op-badge">Зведена статистика</span>
+                    </div>
+                    <h5>Запуск усіх 5 методів та загальний звіт</h5>
+                    <p>Функція <code>main()</code> запускає кожен метод по черзі, підраховує кількість пройдених тестів
+                        у кожній групі та виводить фінальний підсумок:
+                        <code>ЗАГАЛЬНИЙ ПІДСУМОК: пройдено 32 з 32 тестів (100% успішно)</code>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================= -->
+        <!-- TAB 4: 10 ГОТОВИХ ВІДПОВІДЕЙ                                  -->
+        <!-- ============================================================= -->
+        <section id="tab-qa" class="tab-pane">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">⚡ 10 Готових відповідей на найчастіші запитання</span>
+                    <span class="pill pill-amber">Шпаргалка до запитань</span>
+                </div>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Натисніть на будь-яке
+                    запитання, щоб побачити готову коротку відповідь для викладачки.</p>
+
+                <div class="qa-card">
+                    <div class="qa-trigger" onclick="toggleQA(this)">1. Що таке тестовий драйвер і чим він відрізняється
+                        від заглушки? <span>▾</span></div>
+                    <div class="qa-content">
+                        <strong>Драйвер (*Driver*)</strong> — це модуль верхнього рівня, який викликає тестований модуль
+                        і передає йому вхідні дані (використовується при тестуванні <em>знизу вгору</em>). А
+                        <strong>заглушка (*Stub*)</strong> — це імітатор модуля нижнього рівня, щоб повернути фіктивні
+                        дані викликаючому модулю (використовується при тестуванні <em>згори вниз</em>).
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-trigger" onclick="toggleQA(this)">2. Чому в циклі посимвольного аналізу обрали i
+                        &lt;= length, а не &lt; ? <span>▾</span></div>
+                    <div class="qa-content">
+                        Щоб коректно обробити останній напій у чеку! Якщо в кінці чека немає коми чи пробілу, на позиції
+                        <code>i === length</code> умова <code>isEnd</code> спрацьовує як True, і накопичений буфер
+                        <code>currentDrink</code> успішно перевіряється та підраховується.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-trigger" onclick="toggleQA(this)">3. Чому маленька літера 'l' знаходить напій з
+                        великої літери 'Latte'? <span>▾</span></div>
+                    <div class="qa-content">
+                        Пошук реалізовано без урахування регістру (*case-insensitive*). І шуканий префікс переводиться в
+                        нижній регістр (<code>drinkPrefix.toLowerCase()</code>), і перша літера виділеного слова
+                        приводиться до нижнього регістру (<code>currentDrink[0].toLowerCase()</code>).
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-trigger" onclick="toggleQA(this)">4. У чому різниця між методом покриття умов та
+                        методом покриття рішень? <span>▾</span></div>
+                    <div class="qa-content">
+                        <strong>Покриття рішень (*Decision Coverage*)</strong> вимагає, щоб кожен керуючий логічний
+                        вираз у цілому набув значень True та False хоча б один раз. <strong>Покриття умов (*Condition
+                            Coverage*)</strong> вимагає, щоб кожна елементарна під-умова (наприклад,
+                        <code>a &gt; b</code> та <code>c &lt; 2</code>) окремо набула значень True та False.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-trigger" onclick="toggleQA(this)">5. Що таке комбінаторне покриття умов (Multiple
+                        Condition Coverage)? <span>▾</span></div>
+                    <div class="qa-content">
+                        Це метод білої скриньки, що вимагає перевірки абсолютно всіх можливих комбінацій значень
+                        елементарних умов. Для $n$ умов це потребує $2^n$ тестових наборів (наприклад, для 2 умов — 4
+                        тести: True-True, True-False, False-True, False-False).
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-trigger" onclick="toggleQA(this)">6. Чому для простої умови if (a &gt; b) покриття
+                        умов і рішень збігаються? <span>▾</span></div>
+                    <div class="qa-content">
+                        Оскільки в такій умові немає логічних зв'язок (<code>&amp;&amp;</code>, <code>||</code>),
+                        елементарна умова збігається з усім рішенням. Тому таблиця покриття умов вироджується в таблицю
+                        покриття рішень.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-trigger" onclick="toggleQA(this)">7. Чому вхідними параметрами нестатичного методу
+                        С++ add(int n) є 2 параметри? <span>▾</span></div>
+                    <div class="qa-content">
+                        Тому що <code>n</code> — явний вхідний параметр, а <code>this</code> — неявний вказівник на
+                        поточний об'єкт класу, який компілятор C++ автоматично першим аргументом передає у будь-який
+                        нестатичний метод.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-trigger" onclick="toggleQA(this)">8. Чим відрізняється еквівалентне розбиття від
+                        аналізу граничних значень? <span>▾</span></div>
+                    <div class="qa-content">
+                        <strong>Еквівалентне розбиття</strong> бере одне типове значення з середини класу (всі значення
+                        класу поводяться однаково). <strong>Аналіз граничних значень</strong> перевіряє саме межі ($min,
+                        min-1, max, max+1$), де найчастіше виникають дефекти через знаки <code>&lt;</code> замість
+                        <code>&lt;=</code>.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-trigger" onclick="toggleQA(this)">9. Чому обрали TypeScript, а не C++ / C#?
+                        <span>▾</span></div>
+                    <div class="qa-content">
+                        Відповідно до дозволу викладача, мова може бути будь-якою за умови строгої типізації аргументів
+                        (TypeScript це забезпечує), наявності власного драйвера та виконання unit-тестів.
+                    </div>
+                </div>
+
+                <div class="qa-card">
+                    <div class="qa-trigger" onclick="toggleQA(this)">10. Як обчислюється цикломатична складність за
+                        Маккейбом? <span>▾</span></div>
+                    <div class="qa-content">
+                        Формула: $V(G) = P + 1$, де $P$ — кількість предикатних вузлів (розгалужень у коді). Вона
+                        визначає кількість лінійно незалежних шляхів виконання програми.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-inner .tab-btn').forEach(el => el.classList.remove('active'));
+
+            const target = document.getElementById(tabId);
+            if (target) target.classList.add('active');
+
+            const btn = Array.from(document.querySelectorAll('.nav-inner .tab-btn'))
+                .find(b => b.getAttribute('onclick')?.includes(tabId));
+            if (btn) btn.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function focusLine(lineNum) {
+            document.querySelectorAll('#tab-tokens .code-row').forEach(r => r.classList.remove('active'));
+            document.querySelectorAll('#tab-tokens .line-card').forEach(c => c.classList.remove('highlight'));
+
+            const rows = document.querySelectorAll('#tab-tokens .code-row');
+            rows.forEach(r => {
+                if (r.querySelector('.num-col')?.textContent.trim() === String(lineNum)) {
+                    r.classList.add('active');
+                }
+            });
+
+            let cardId = 'card-46';
+            if (lineNum >= 40 && lineNum <= 48) cardId = 'card-46';
+            else if (lineNum >= 49 && lineNum <= 53) cardId = 'card-50';
+            else if (lineNum >= 54 && lineNum <= 58) cardId = 'card-55';
+            else if (lineNum >= 59 && lineNum <= 61) cardId = 'card-59';
+            else if (lineNum >= 62 && lineNum <= 72) cardId = 'card-63';
+            else if (lineNum >= 73) cardId = 'card-74';
+
+            const card = document.getElementById(cardId);
+            if (card) {
+                card.classList.add('highlight');
+                card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        function switchDriverView(viewId, btnEl) {
+            document.getElementById('driver-lab1').style.display = viewId === 'driver-lab1' ? 'block' : 'none';
+            document.getElementById('driver-lab2').style.display = viewId === 'driver-lab2' ? 'block' : 'none';
+            document.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
+            btnEl.classList.add('active');
+        }
+
+        function focusDriverLine(cardSuffix) {
+            document.querySelectorAll('#tab-drivers .line-card').forEach(c => c.classList.remove('highlight'));
+            const card = document.getElementById('card-' + cardSuffix);
+            if (card) {
+                card.classList.add('highlight');
+                card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        function toggleQA(triggerEl) {
+            const content = triggerEl.nextElementSibling;
+            const isHidden = content.style.display === 'none';
+            content.style.display = isHidden ? 'block' : 'none';
+            triggerEl.querySelector('span').textContent = isHidden ? '▾' : '▸';
+        }
+    </script>
+</body>
+
+</html>
