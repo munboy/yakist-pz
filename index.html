@@ -569,7 +569,7 @@
             <button class="tab-btn active" onclick="showTab('tab-process')">🎓 Як проходить захист</button>
             <button class="tab-btn" onclick="showTab('tab-tokens')">☕ Функція посимвольного аналізу</button>
             <button class="tab-btn" onclick="showTab('tab-drivers')">🚗 Драйвери (driver.ts розбір коду)</button>
-            <button class="tab-btn" onclick="showTab('tab-qa')">⚡ 10 Готових відповідей</button>
+            <button class="tab-btn" onclick="showTab('tab-qa')">⚡ 11 Готових відповідей</button>
         </div>
     </nav>
 
@@ -718,21 +718,21 @@
                             class="code-text"> } <span class="syn-kw">else</span> {</span></div>
                     <div class="code-row" onclick="focusLine(63)"><span class="num-col">63</span><span
                             class="code-text"> <span class="syn-kw">if</span> (currentDrink.length &gt; <span
-                                class="syn-num">0</span>) { <span class="syn-cmt">// Оператор 11</span></span></div>
+                                class="syn-num">0</span>) { <span class="syn-cmt">// Оператор 10</span></span></div>
                     <div class="code-row" onclick="focusLine(64)"><span class="num-col">64</span><span
                             class="code-text"> <span class="syn-kw">const</span> firstChar = currentDrink[<span
                                 class="syn-num">0</span>].<span class="syn-fn">toLowerCase</span>(); <span
-                                class="syn-cmt">// Оператор 12</span></span></div>
+                                class="syn-cmt">// Оператор 11</span></span></div>
                     <div class="code-row" onclick="focusLine(66)"><span class="num-col">66</span><span
                             class="code-text"> <span class="syn-kw">if</span> (currentDrink.length &gt;= minDrinkLength
-                            &amp;&amp; firstChar === targetPrefix) {</span></div>
+                            &amp;&amp; firstChar === targetPrefix) { <span class="syn-cmt">// Оператор 12</span></span></div>
                     <div class="code-row" onclick="focusLine(67)"><span class="num-col">67</span><span
-                            class="code-text"> matchCount++; <span class="syn-cmt">// Оператор 14</span></span></div>
+                            class="code-text"> matchCount++; <span class="syn-cmt">// Оператор 13</span></span></div>
                     <div class="code-row" onclick="focusLine(68)"><span class="num-col">68</span><span
                             class="code-text"> }</span></div>
                     <div class="code-row" onclick="focusLine(69)"><span class="num-col">69</span><span
                             class="code-text"> currentDrink = <span class="syn-str">""</span>; <span class="syn-cmt">//
-                                Оператор 15</span></span></div>
+                                Оператор 14</span></span></div>
                     <div class="code-row" onclick="focusLine(70)"><span class="num-col">70</span><span
                             class="code-text"> }</span></div>
                     <div class="code-row" onclick="focusLine(71)"><span class="num-col">71</span><span
@@ -741,7 +741,7 @@
                             class="code-text"> }</span></div>
                     <div class="code-row" onclick="focusLine(74)"><span class="num-col">74</span><span
                             class="code-text"> <span class="syn-kw">return</span> matchCount; <span class="syn-cmt">//
-                                Оператор 16</span></span></div>
+                                Оператор 15</span></span></div>
                     <div class="code-row" onclick="focusLine(75)"><span class="num-col">75</span><span
                             class="code-text">}</span></div>
                 </div>
@@ -803,7 +803,7 @@
             <div id="card-63" class="line-card">
                 <div class="line-card-header">
                     <span class="line-badge">Рядки 63–71</span>
-                    <span class="op-badge">Оператори 10–15</span>
+                    <span class="op-badge">Оператори 10–14</span>
                 </div>
                 <h5>Перевірка слова та скидання буфера</h5>
                 <p>Коли зустрівся роздільник і <code>currentDrink.length &gt; 0</code>:<br>
@@ -816,7 +816,7 @@
             <div id="card-74" class="line-card">
                 <div class="line-card-header">
                     <span class="line-badge">Рядки 74–75</span>
-                    <span class="op-badge">Оператор 16</span>
+                    <span class="op-badge">Оператор 15</span>
                 </div>
                 <h5>Повернення результату</h5>
                 <p>Повертає загальну кількість знайдених напоїв.</p>
@@ -1137,7 +1137,7 @@
                     <h5>Запуск усіх 5 методів та загальний звіт</h5>
                     <p>Функція <code>main()</code> запускає кожен метод по черзі, підраховує кількість пройдених тестів
                         у кожній групі та виводить фінальний підсумок:
-                        <code>ЗАГАЛЬНИЙ ПІДСУМОК: пройдено 32 з 32 тестів (100% успішно)</code>.</p>
+                        <code>ЗАГАЛЬНИЙ ПІДСУМОК: пройдено 47 з 47 тестів (100% успішно)</code>.</p>
                 </div>
             </div>
         </section>
@@ -1148,7 +1148,7 @@
         <section id="tab-qa" class="tab-pane">
             <div class="card">
                 <div class="card-header">
-                    <span class="card-title">⚡ 10 Готових відповідей на найчастіші запитання</span>
+                    <span class="card-title">⚡ 11 Готових відповідей на найчастіші запитання</span>
                     <span class="pill pill-amber">Шпаргалка до запитань</span>
                 </div>
                 <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Натисніть на будь-яке
@@ -1254,6 +1254,13 @@
                         визначає кількість лінійно незалежних шляхів виконання програми.
                     </div>
                 </div>
+
+                <div class="qa-card">
+                    <div class="qa-trigger" onclick="toggleQA(this)">11. Чому в Таблиці 3 (Покриття умов) немає стовпця D2, а в Таблиці 4 він є? <span>▾</span></div>
+                    <div class="qa-content">
+                        <strong>Покриття умов (*Condition Coverage*)</strong> досліджує <u>виключно елементарні під-умови</u> ($C_{2.1}, C_{2.2}, C_{2.3}$), кожна з яких повинна прийняти True і False. Загальне розгалуження $D_2$ тут не оцінюється, тому стовпець $D_2$ у цій таблиці методологічно зайвий. Натомість у <strong>Таблиці 4 (*Покриття умов та рішень*)</strong> ми обов'язково контролюємо і під-умови, і результуючу гілку $D_2$ (True/False), тому там стовпець $D_2$ необхідний.
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1318,9 +1325,10 @@
 
         function toggleQA(triggerEl) {
             const content = triggerEl.nextElementSibling;
-            const isHidden = content.style.display === 'none';
+            const isHidden = window.getComputedStyle(content).display === 'none';
             content.style.display = isHidden ? 'block' : 'none';
-            triggerEl.querySelector('span').textContent = isHidden ? '▾' : '▸';
+            const span = triggerEl.querySelector('span');
+            if (span) span.textContent = isHidden ? '▾' : '▸';
         }
     </script>
 </body>

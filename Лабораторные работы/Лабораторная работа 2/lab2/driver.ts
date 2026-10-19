@@ -7,6 +7,10 @@ import {
     boundaryValueTests,
     errorGuessingTests,
     causeEffectTests,
+    tokenEquivalenceTests,
+    tokenBoundaryTests,
+    tokenErrorGuessingTests,
+    tokenCauseEffectTests,
     tokenBlackBoxTests
 } from './tests.ts';
 import type { BlackBoxTestCase, TokenBlackBoxTestCase } from './tests.ts';
@@ -104,13 +108,16 @@ async function main(): Promise<void> {
     if (isInteractive) {
         await runInteractiveMode();
     } else {
-        const p1 = runTestSuite("Метод 1: Еквівалентне розбиття", equivalencePartitioningTests);
-        const p2 = runTestSuite("Метод 2: Аналіз граничних значень", boundaryValueTests);
-        const p3 = runTestSuite("Метод 3: Припущення про помилку", errorGuessingTests);
-        const p4 = runTestSuite("Метод 4: Функціональні діаграми", causeEffectTests);
-        const p5 = runTokenTestSuite("Тести функції countCoffeeOrderTokens", tokenBlackBoxTests);
+        const p1 = runTestSuite("Функція 1 (calculateCoffeeDiscount) - Метод 1: Еквівалентне розбиття", equivalencePartitioningTests);
+        const p2 = runTestSuite("Функція 1 (calculateCoffeeDiscount) - Метод 2: Аналіз граничних значень", boundaryValueTests);
+        const p3 = runTestSuite("Функція 1 (calculateCoffeeDiscount) - Метод 3: Припущення про помилку", errorGuessingTests);
+        const p4 = runTestSuite("Функція 1 (calculateCoffeeDiscount) - Метод 4: Функціональні діаграми", causeEffectTests);
+        const p5 = runTokenTestSuite("Функція 2 (countCoffeeOrderTokens) - Метод 1: Еквівалентне розбиття", tokenEquivalenceTests);
+        const p6 = runTokenTestSuite("Функція 2 (countCoffeeOrderTokens) - Метод 2: Аналіз граничних значень", tokenBoundaryTests);
+        const p7 = runTokenTestSuite("Функція 2 (countCoffeeOrderTokens) - Метод 3: Припущення про помилку", tokenErrorGuessingTests);
+        const p8 = runTokenTestSuite("Функція 2 (countCoffeeOrderTokens) - Метод 4: Функціональні діаграми", tokenCauseEffectTests);
 
-        const totalPassed = p1 + p2 + p3 + p4 + p5;
+        const totalPassed = p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8;
         const totalTests = equivalencePartitioningTests.length + boundaryValueTests.length +
             errorGuessingTests.length + causeEffectTests.length + tokenBlackBoxTests.length;
         console.log(`ЗАГАЛЬНИЙ ПІДСУМОК: пройдено ${totalPassed} з ${totalTests} тестів (${Math.round((totalPassed / totalTests) * 100)}% успішно)`);

@@ -10,7 +10,10 @@ import {
     boundaryValueTests,
     errorGuessingTests,
     causeEffectTests,
-    tokenBlackBoxTests
+    tokenEquivalenceTests,
+    tokenBoundaryTests,
+    tokenErrorGuessingTests,
+    tokenCauseEffectTests
 } from './tests.ts';
 
 describe('Модульні тести: calculateCoffeeDiscount', () => {
@@ -80,16 +83,63 @@ describe('Модульні тести: calculateCoffeeDiscount', () => {
 });
 
 describe('Модульні тести: countCoffeeOrderTokens', () => {
-    for (const tc of tokenBlackBoxTests) {
-        it(`[${tc.id}] ${tc.description}`, () => {
-            // Arrange
-            const { receipt, prefix, minLen, expected } = tc;
+    describe('Метод 1: Еквівалентне розбиття', () => {
+        for (const tc of tokenEquivalenceTests) {
+            it(`[${tc.id}] ${tc.description}`, () => {
+                // Arrange
+                const { receipt, prefix, minLen, expected } = tc;
 
-            // Act
-            const actual = countCoffeeOrderTokens(receipt, prefix, minLen);
+                // Act
+                const actual = countCoffeeOrderTokens(receipt, prefix, minLen);
 
-            // Assert
-            assert.strictEqual(actual, expected, `Тест ${tc.id} не пройшов`);
-        });
-    }
+                // Assert
+                assert.strictEqual(actual, expected, `Тест ${tc.id} не пройшов`);
+            });
+        }
+    });
+
+    describe('Метод 2: Аналіз граничних значень', () => {
+        for (const tc of tokenBoundaryTests) {
+            it(`[${tc.id}] ${tc.description}`, () => {
+                // Arrange
+                const { receipt, prefix, minLen, expected } = tc;
+
+                // Act
+                const actual = countCoffeeOrderTokens(receipt, prefix, minLen);
+
+                // Assert
+                assert.strictEqual(actual, expected, `Тест ${tc.id} не пройшов`);
+            });
+        }
+    });
+
+    describe('Метод 3: Припущення про помилку', () => {
+        for (const tc of tokenErrorGuessingTests) {
+            it(`[${tc.id}] ${tc.description}`, () => {
+                // Arrange
+                const { receipt, prefix, minLen, expected } = tc;
+
+                // Act
+                const actual = countCoffeeOrderTokens(receipt, prefix, minLen);
+
+                // Assert
+                assert.strictEqual(actual, expected, `Тест ${tc.id} не пройшов`);
+            });
+        }
+    });
+
+    describe('Метод 4: Функціональні діаграми / Таблиці рішень', () => {
+        for (const tc of tokenCauseEffectTests) {
+            it(`[${tc.id}] ${tc.description}`, () => {
+                // Arrange
+                const { receipt, prefix, minLen, expected } = tc;
+
+                // Act
+                const actual = countCoffeeOrderTokens(receipt, prefix, minLen);
+
+                // Assert
+                assert.strictEqual(actual, expected, `Тест ${tc.id} не пройшов`);
+            });
+        }
+    });
 });

@@ -32,8 +32,8 @@ export function calculateCoffeeDiscount(
         return 5; // Оператор 10
     }
 
-    // Оператор 11: знижка не надається
-    return 0; // Оператор 12
+    // Оператор 11: замовлення без знижки
+    return 0;
 }
 
 // Функція 2: Посимвольний аналіз чеку замовлень кав'ярні
@@ -59,17 +59,17 @@ export function countCoffeeOrderTokens(
         if (!isEnd) { // Оператор 8
             currentDrink += receiptText[i]; // Оператор 9
         } else {
-            // Оператор 10: перевірка накопиченої назви напою
-            if (currentDrink.length > 0) { // Оператор 11
-                const firstChar = currentDrink[0].toLowerCase(); // Оператор 12
-                // Оператор 13: складена умова перевірки довжини та префікса
+            // Перевірка накопиченої назви напою
+            if (currentDrink.length > 0) { // Оператор 10
+                const firstChar = currentDrink[0].toLowerCase(); // Оператор 11
+                // Оператор 12: складена умова перевірки довжини та префікса
                 if (currentDrink.length >= minDrinkLength && firstChar === targetPrefix) {
-                    matchCount++; // Оператор 14
+                    matchCount++; // Оператор 13
                 }
-                currentDrink = ""; // Оператор 15
+                currentDrink = ""; // Оператор 14
             }
         }
     }
 
-    return matchCount; // Оператор 16
+    return matchCount; // Оператор 15
 }

@@ -86,12 +86,54 @@ export const causeEffectTests: BlackBoxTestCase[] = [
     { id: "CE.7", method: "Функціональні діаграми", description: "Усі умови відхилені -> Наслідок E5 (0% без знижки)", input: [150, 2, false, false], expected: 0 }
 ];
 
-// Тести для функції 2: countCoffeeOrderTokens
+// 5. Тести для функції 2: countCoffeeOrderTokens за методами чорної скриньки
+
+// 5.1. Еквівалентне розбиття для countCoffeeOrderTokens
+export const tokenEquivalenceTests: TokenBlackBoxTestCase[] = [
+    { id: "EP_T.1", method: "Еквівалентне розбиття", description: "Кілька напоїв через кому і пробіл, шуканий префікс 'l'", receipt: "Latte, Lungo, Cappuccino", prefix: "l", minLen: 5, expected: 2 },
+    { id: "EP_T.2", method: "Еквівалентне розбиття", description: "Один напій без роздільників, валідний префікс", receipt: "Espresso", prefix: "e", minLen: 3, expected: 1 },
+    { id: "EP_T.3", method: "Еквівалентне розбиття", description: "Порожній рядок чеку (довжина 0)", receipt: "", prefix: "l", minLen: 3, expected: 0 },
+    { id: "EP_T.4", method: "Еквівалентне розбиття", description: "Чек без жодного напою на шуканий префікс", receipt: "Tea, Juice, Water", prefix: "c", minLen: 3, expected: 0 },
+    { id: "EP_T.5", method: "Еквівалентне розбиття", description: "Префікс у верхньому регістрі ('M'), фільтр довжини 6", receipt: "Macchiato, Mocha", prefix: "M", minLen: 6, expected: 1 },
+    { id: "EP_T.6", method: "Еквівалентне розбиття", description: "Мінімальна довжина більша за довжину будь-якого слова", receipt: "Espresso, Doppio", prefix: "d", minLen: 15, expected: 0 },
+    { id: "EP_T.7", method: "Еквівалентне розбиття", description: "Рядок містить виключно роздільники (коми та пробіли)", receipt: ",   ,", prefix: "e", minLen: 2, expected: 0 },
+    { id: "EP_T.8", method: "Еквівалентне розбиття", description: "Невалідний поріг minDrinkLength = 0 (помилка)", receipt: "Latte", prefix: "l", minLen: 0, expected: -1 },
+    { id: "EP_T.9", method: "Еквівалентне розбиття", description: "Невалідний від'ємний поріг minDrinkLength = -3 (помилка)", receipt: "Latte", prefix: "l", minLen: -3, expected: -1 }
+];
+
+// 5.2. Аналіз граничних значень для countCoffeeOrderTokens
+export const tokenBoundaryTests: TokenBlackBoxTestCase[] = [
+    { id: "BVA_T.1", method: "Граничні значення", description: "minDrinkLength = -1 (на 1 менше 0, невалідно)", receipt: "Tea", prefix: "t", minLen: -1, expected: -1 },
+    { id: "BVA_T.2", method: "Граничні значення", description: "minDrinkLength = 0 (ліва невалідна межа)", receipt: "Tea", prefix: "t", minLen: 0, expected: -1 },
+    { id: "BVA_T.3", method: "Граничні значення", description: "minDrinkLength = 1 (мінімальна валідна довжина)", receipt: "Tea", prefix: "t", minLen: 1, expected: 1 },
+    { id: "BVA_T.4", method: "Граничні значення", description: "minDrinkLength = 2 (поріг min+1)", receipt: "Tea", prefix: "t", minLen: 2, expected: 1 },
+    { id: "BVA_T.5", method: "Граничні значення", description: "Довжина чеку = 0 (порожній рядок)", receipt: "", prefix: "a", minLen: 1, expected: 0 },
+    { id: "BVA_T.6", method: "Граничні значення", description: "Довжина чеку = 1 (односимвольний напій)", receipt: "T", prefix: "t", minLen: 1, expected: 1 },
+    { id: "BVA_T.7", method: "Граничні значення", description: "Довжина слова на 1 менша за minDrinkLength (3 < 4)", receipt: "Tea", prefix: "t", minLen: 4, expected: 0 },
+    { id: "BVA_T.8", method: "Граничні значення", description: "Довжина слова точно дорівнює minDrinkLength (5 == 5)", receipt: "Mocha", prefix: "m", minLen: 5, expected: 1 }
+];
+
+// 5.3. Припущення про помилку для countCoffeeOrderTokens
+export const tokenErrorGuessingTests: TokenBlackBoxTestCase[] = [
+    { id: "EG_T.1", method: "Припущення про помилку", description: "Множинні пробіли та коми між словами без тексту", receipt: "Espresso,   ,  Latte", prefix: "e", minLen: 5, expected: 1 },
+    { id: "EG_T.2", method: "Припущення про помилку", description: "Змішаний регістр (camelCase/UPPERCASE) у назвах та префіксі", receipt: "eSpReSsO, LATTE", prefix: "E", minLen: 4, expected: 1 },
+    { id: "EG_T.3", method: "Припущення про помилку", description: "Префікс є цифрою (напій з цифрою на початку)", receipt: "1stCoffee, 2ndTea", prefix: "1", minLen: 3, expected: 1 },
+    { id: "EG_T.4", method: "Припущення про помилку", description: "Пробіли на початку та в кінці всього рядка чеку", receipt: "   Americano   ", prefix: "a", minLen: 4, expected: 1 },
+    { id: "EG_T.5", method: "Припущення про помилку", description: "Роздільник (кома) на самому кінці рядка чеку", receipt: "Cappuccino, Latte,", prefix: "l", minLen: 5, expected: 1 }
+];
+
+// 5.4. Функціональні діаграми / Таблиці рішень для countCoffeeOrderTokens
+export const tokenCauseEffectTests: TokenBlackBoxTestCase[] = [
+    { id: "CE_T.1", method: "Функціональні діаграми", description: "Префікс збігся І довжина >= minLen -> Інкремент (E1)", receipt: "FlatWhite, Espresso", prefix: "f", minLen: 4, expected: 1 },
+    { id: "CE_T.2", method: "Функціональні діаграми", description: "Префікс збігся, але довжина < minLen -> Пропуск (E2)", receipt: "Frappe, Filter", prefix: "f", minLen: 7, expected: 0 },
+    { id: "CE_T.3", method: "Функціональні діаграми", description: "Префікс не збігся, хоча довжина >= minLen -> Пропуск (E2)", receipt: "Americano, Latte", prefix: "c", minLen: 4, expected: 0 },
+    { id: "CE_T.4", method: "Функціональні діаграми", description: "Некоректний поріг minDrinkLength <= 0 -> Помилка (E4)", receipt: "Espresso", prefix: "e", minLen: 0, expected: -1 }
+];
+
+// Загальний зведений масив усіх тестів для функції 2 (26 тестів)
 export const tokenBlackBoxTests: TokenBlackBoxTestCase[] = [
-    { id: "TB.1", method: "Граничні значення", description: "minDrinkLength = 0 (невалідна границя)", receipt: "Espresso Latte", prefix: "e", minLen: 0, expected: -1 },
-    { id: "TB.2", method: "Граничні значення", description: "minDrinkLength = 1 (мінімальна довжина)", receipt: "Tea, Espresso", prefix: "t", minLen: 1, expected: 1 },
-    { id: "TB.3", method: "Еквівалентне розбиття", description: "Порожній рядок чеку (довжина 0)", receipt: "", prefix: "l", minLen: 3, expected: 0 },
-    { id: "TB.4", method: "Еквівалентне розбиття", description: "Кілька напоїв через кому і пробіл", receipt: "Latte, Lungo, Cappuccino", prefix: "L", minLen: 5, expected: 2 },
-    { id: "TB.5", method: "Припущення про помилку", description: "Різний регістр літер (Mocha, macchiato)", receipt: "Mocha, macchiato, Americano", prefix: "M", minLen: 6, expected: 1 },
-    { id: "TB.6", method: "Припущення про помилку", description: "Завищена мінімальна довжина (довша за будь-яке слово)", receipt: "Espresso, Doppio", prefix: "d", minLen: 15, expected: 0 }
+    ...tokenEquivalenceTests,
+    ...tokenBoundaryTests,
+    ...tokenErrorGuessingTests,
+    ...tokenCauseEffectTests
 ];

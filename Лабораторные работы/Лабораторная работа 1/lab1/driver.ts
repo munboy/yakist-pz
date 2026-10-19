@@ -2,7 +2,7 @@
 
 import * as readline from 'node:readline';
 import { calculateCoffeeDiscount, countCoffeeOrderTokens } from './functions.ts';
-import { discountTests, tokenTests } from './tests.ts';
+import { discountTests, tokenTests, tokenConditionTests } from './tests.ts';
 import type { DiscountTestCase, TokenTestCase } from './tests.ts';
 
 // Автоматичне тестування функції calculateCoffeeDiscount
@@ -24,8 +24,8 @@ function runDiscountTests(tests: DiscountTestCase[]): number {
 }
 
 // Автоматичне тестування функції countCoffeeOrderTokens
-function runTokenTests(tests: TokenTestCase[]): number {
-    console.log("Запуск тестів для countCoffeeOrderTokens:");
+function runTokenTests(tests: TokenTestCase[], testSuiteName: string = "countCoffeeOrderTokens"): number {
+    console.log(`Запуск тестів для ${testSuiteName}:`);
     let passed = 0;
 
     for (const t of tests) {
@@ -37,7 +37,7 @@ function runTokenTests(tests: TokenTestCase[]): number {
         console.log(`[${t.id}] Вхід: ${inputStr} -> очікувано: ${t.expected}, факт: ${actual} [${ok ? 'OK' : 'FAIL'}]`);
     }
 
-    console.log(`Результат тестування countCoffeeOrderTokens: пройдено ${passed} з ${tests.length} тестів (${Math.round((passed / tests.length) * 100)}% успішно)\n`);
+    console.log(`Результат тестування ${testSuiteName}: пройдено ${passed} з ${tests.length} тестів (${Math.round((passed / tests.length) * 100)}% успішно)\n`);
     return passed;
 }
 
@@ -103,7 +103,8 @@ async function main(): Promise<void> {
         await runInteractiveMode();
     } else {
         runDiscountTests(discountTests);
-        runTokenTests(tokenTests);
+        runTokenTests(tokenTests, "countCoffeeOrderTokens (Покриття операторів та рішень)");
+        runTokenTests(tokenConditionTests, "countCoffeeOrderTokens (Покриття умов)");
     }
 }
 
