@@ -2,7 +2,7 @@
 
 import * as readline from 'node:readline';
 import { calculateCoffeeDiscount, countCoffeeOrderTokens } from './functions.ts';
-import { discountTests, tokenTests, tokenConditionTests } from './tests.ts';
+import { discountTests, tokenTests, tokenConditionTests, tokenDecisionConditionTests } from './tests.ts';
 import type { DiscountTestCase, TokenTestCase } from './tests.ts';
 
 function runDiscountTests(tests: DiscountTestCase[]): number {
@@ -102,6 +102,7 @@ async function main(): Promise<void> {
         runDiscountTests(discountTests);
         runTokenTests(tokenTests, "countCoffeeOrderTokens (Покриття операторів та рішень)");
         runTokenTests(tokenConditionTests, "countCoffeeOrderTokens (Покриття умов)");
+        runTokenTests(tokenDecisionConditionTests, "countCoffeeOrderTokens (Покриття умов та рішень)");
     }
 }
 

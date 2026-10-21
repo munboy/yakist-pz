@@ -85,6 +85,7 @@ export const discountTests: DiscountTestCase[] = [
 ];
 
 // countCoffeeOrderTokens
+// 1. Оператори та рішення
 export const tokenTests: TokenTestCase[] = [
     { id: "TW.1", receipt: "Espresso", prefix: "e", minLen: 0, expected: -1 },
     { id: "TW.2", receipt: "", prefix: "l", minLen: 3, expected: 0 },
@@ -96,7 +97,7 @@ export const tokenTests: TokenTestCase[] = [
     { id: "TW.8", receipt: "MOCHA", prefix: "m", minLen: 4, expected: 1 }
 ];
 
-// countCoffeeOrderTokens (умови)
+// 2. Умови
 export const tokenConditionTests: TokenTestCase[] = [
     { id: "TWC.1", receipt: "Latte", prefix: "l", minLen: 0, expected: -1 },
     { id: "TWC.2", receipt: "", prefix: "l", minLen: 3, expected: 0 },
@@ -105,3 +106,14 @@ export const tokenConditionTests: TokenTestCase[] = [
     { id: "TWC.5", receipt: "Espresso", prefix: "d", minLen: 3, expected: 0 },
     { id: "TWC.6", receipt: "Latte", prefix: "m", minLen: 10, expected: 0 }
 ];
+
+// 3. Умови та рішення
+export const tokenDecisionConditionTests: TokenTestCase[] = [
+    { id: "TWDC.1", receipt: "Latte", prefix: "l", minLen: 0, expected: -1 },
+    { id: "TWDC.2", receipt: "", prefix: "l", minLen: 3, expected: 0 },
+    { id: "TWDC.3", receipt: "Latte, Lungo", prefix: "l", minLen: 3, expected: 2 },
+    { id: "TWDC.4", receipt: "Tea", prefix: "t", minLen: 5, expected: 0 },
+    { id: "TWDC.5", receipt: "Espresso", prefix: "d", minLen: 3, expected: 0 },
+    { id: "TWDC.6", receipt: "Latte", prefix: "m", minLen: 10, expected: 0 }
+];
+
