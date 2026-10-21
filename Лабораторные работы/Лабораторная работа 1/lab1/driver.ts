@@ -1,11 +1,10 @@
-// Драйвер тестування функцій кав'ярні
+// Драйвер тестування
 
 import * as readline from 'node:readline';
 import { calculateCoffeeDiscount, countCoffeeOrderTokens } from './functions.ts';
 import { discountTests, tokenTests, tokenConditionTests } from './tests.ts';
 import type { DiscountTestCase, TokenTestCase } from './tests.ts';
 
-// Автоматичне тестування функції calculateCoffeeDiscount
 function runDiscountTests(tests: DiscountTestCase[]): number {
     console.log("Запуск тестів для calculateCoffeeDiscount:");
     let passed = 0;
@@ -23,7 +22,6 @@ function runDiscountTests(tests: DiscountTestCase[]): number {
     return passed;
 }
 
-// Автоматичне тестування функції countCoffeeOrderTokens
 function runTokenTests(tests: TokenTestCase[], testSuiteName: string = "countCoffeeOrderTokens"): number {
     console.log(`Запуск тестів для ${testSuiteName}:`);
     let passed = 0;
@@ -41,7 +39,7 @@ function runTokenTests(tests: TokenTestCase[], testSuiteName: string = "countCof
     return passed;
 }
 
-// Діалоговий режим тестування (ручне введення параметрів)
+// Інтерактивний режим
 async function runInteractiveMode(): Promise<void> {
     const rl = readline.createInterface({
         input: process.stdin,
@@ -95,7 +93,6 @@ async function runInteractiveMode(): Promise<void> {
     rl.close();
 }
 
-// Головна точка входу
 async function main(): Promise<void> {
     const isInteractive = process.argv.includes('--interactive') || process.argv.includes('-i');
 

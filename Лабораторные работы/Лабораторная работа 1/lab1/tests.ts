@@ -1,5 +1,3 @@
-// Набори тестів для методів тестування білої скриньки
-
 export interface DiscountTestCase {
     id: string;
     method: string;
@@ -15,10 +13,9 @@ export interface TokenTestCase {
     expected: number;
 }
 
-// Повний розгорнутий тестовий набір для функції 1 (calculateCoffeeDiscount)
-// Покриває 5 методів білої скриньки
+// calculateCoffeeDiscount
 export const discountTests: DiscountTestCase[] = [
-    // 1. Покриття операторів (Statement Coverage) — розширений набір для всіх 12 операторів та граничних випадків
+    // 1. Оператори
     { id: "T1.1", method: "Покриття операторів", input: [-50, 2, false, false], expected: -1 },
     { id: "T1.2", method: "Покриття операторів", input: [5500, 2, false, false], expected: -1 },
     { id: "T1.3", method: "Покриття операторів", input: [100, 0, false, false], expected: -1 },
@@ -32,7 +29,7 @@ export const discountTests: DiscountTestCase[] = [
     { id: "T1.11", method: "Покриття операторів", input: [100, 1, true, false], expected: 5 },
     { id: "T1.12", method: "Покриття операторів", input: [80, 1, false, false], expected: 0 },
 
-    // 2. Покриття рішень (Decision Coverage) — повне проходження всіх гілок розгалужень
+    // 2. Рішення
     { id: "T2.1", method: "Покриття рішень", input: [0, 2, false, false], expected: -1 },
     { id: "T2.2", method: "Покриття рішень", input: [5200, 2, false, false], expected: -1 },
     { id: "T2.3", method: "Покриття рішень", input: [400, 2, true, true], expected: 20 },
@@ -44,7 +41,7 @@ export const discountTests: DiscountTestCase[] = [
     { id: "T2.9", method: "Покриття рішень", input: [100, 2, false, false], expected: 0 },
     { id: "T2.10", method: "Покриття рішень", input: [50, 1, false, false], expected: 0 },
 
-    // 3. Покриття умов (11 тестів для всіх 13 атомарних умов C1.1..C5.1)
+    // 3. Умови
     { id: "TC.1", method: "Покриття умов", input: [-50, 2, false, false], expected: -1 },
     { id: "TC.2", method: "Покриття умов", input: [5500, 2, false, false], expected: -1 },
     { id: "TC.3", method: "Покриття умов", input: [100, 0, false, false], expected: -1 },
@@ -57,7 +54,7 @@ export const discountTests: DiscountTestCase[] = [
     { id: "TC.10", method: "Покриття умов", input: [100, 1, true, false], expected: 5 },
     { id: "TC.11", method: "Покриття умов", input: [80, 1, false, false], expected: 0 },
 
-    // 4. Покриття умов та рішень (11 тестів для всіх 5 рішень D1..D5 та 13 умов)
+    // 4. Умови та рішення
     { id: "TDC.1", method: "Покриття умов та рішень", input: [-50, 2, false, false], expected: -1 },
     { id: "TDC.2", method: "Покриття умов та рішень", input: [5200, 2, false, false], expected: -1 },
     { id: "TDC.3", method: "Покриття умов та рішень", input: [100, 0, false, false], expected: -1 },
@@ -70,8 +67,8 @@ export const discountTests: DiscountTestCase[] = [
     { id: "TDC.10", method: "Покриття умов та рішень", input: [100, 2, true, false], expected: 5 },
     { id: "TDC.11", method: "Покриття умов та рішень", input: [80, 1, false, false], expected: 0 },
 
-    // 5. Комбінаторне покриття умов (Multiple Condition Coverage)
-    // 5.1. Повна таблиця істинності для розгалуження D2 (2^3 = 8 комбінацій)
+    // 5. Комбінаторне покриття
+    // D2
     { id: "T5.1", method: "Комбінаторне покриття (D2)", input: [350, 2, true, true], expected: 20 },
     { id: "T5.2", method: "Комбінаторне покриття (D2)", input: [200, 2, true, true], expected: 10 },
     { id: "T5.3", method: "Комбінаторне покриття (D2)", input: [350, 2, true, false], expected: 5 },
@@ -80,14 +77,14 @@ export const discountTests: DiscountTestCase[] = [
     { id: "T5.6", method: "Комбінаторне покриття (D2)", input: [200, 2, false, true], expected: 10 },
     { id: "T5.7", method: "Комбінаторне покриття (D2)", input: [350, 2, false, false], expected: 0 },
     { id: "T5.8", method: "Комбінаторне покриття (D2)", input: [200, 2, false, false], expected: 0 },
-    // 5.2. Повна таблиця істинності для розгалуження D4 (2^2 = 4 комбінації)
+    // D4
     { id: "T5.9", method: "Комбінаторне покриття (D4)", input: [200, 5, false, true], expected: 10 },
     { id: "T5.10", method: "Комбінаторне покриття (D4)", input: [200, 2, false, true], expected: 10 },
     { id: "T5.11", method: "Комбінаторне покриття (D4)", input: [200, 4, false, false], expected: 10 },
     { id: "T5.12", method: "Комбінаторне покриття (D4)", input: [200, 2, false, false], expected: 0 }
 ];
 
-// Тестовий набір для функції 2 (countCoffeeOrderTokens) — розгорнутий набір із 8 тестів покриття операторів та рішень
+// countCoffeeOrderTokens
 export const tokenTests: TokenTestCase[] = [
     { id: "TW.1", receipt: "Espresso", prefix: "e", minLen: 0, expected: -1 },
     { id: "TW.2", receipt: "", prefix: "l", minLen: 3, expected: 0 },
@@ -99,7 +96,7 @@ export const tokenTests: TokenTestCase[] = [
     { id: "TW.8", receipt: "MOCHA", prefix: "m", minLen: 4, expected: 1 }
 ];
 
-// Тестовий набір покриття умов для функції 2 (countCoffeeOrderTokens) — 6 тестів для всіх 8 умов C1.1..C5.2
+// countCoffeeOrderTokens (умови)
 export const tokenConditionTests: TokenTestCase[] = [
     { id: "TWC.1", receipt: "Latte", prefix: "l", minLen: 0, expected: -1 },
     { id: "TWC.2", receipt: "", prefix: "l", minLen: 3, expected: 0 },
@@ -108,4 +105,3 @@ export const tokenConditionTests: TokenTestCase[] = [
     { id: "TWC.5", receipt: "Espresso", prefix: "d", minLen: 3, expected: 0 },
     { id: "TWC.6", receipt: "Latte", prefix: "m", minLen: 10, expected: 0 }
 ];
-

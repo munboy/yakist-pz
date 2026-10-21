@@ -1,42 +1,39 @@
-// Функції предметної області кав'ярні для Лабораторної роботи №2
-
-// Функція 1: Розрахунок знижки на замовлення кави за специфікацією
+// Розрахунок знижки
 export function calculateCoffeeDiscount(
     orderTotal: number,
     cupsCount: number,
     hasLoyaltyCard: boolean,
     isHappyHour: boolean
 ): number {
-    // Валідація допустимих меж вхідних параметрів
+    // Валідація
     if (orderTotal <= 0 || orderTotal > 5000 || cupsCount <= 0 || cupsCount > 30) {
         return -1;
     }
 
-    // Знижка 20% (картка лояльності, щасливі години, чек від 300 грн)
+    // Знижка 20%
     if (hasLoyaltyCard && isHappyHour && orderTotal >= 300) {
         return 20;
     }
 
-    // Знижка 15% (картка лояльності та замовлення від 5 чашок або сума від 400 грн)
+    // Знижка 15%
     if (hasLoyaltyCard && (cupsCount >= 5 || orderTotal >= 400)) {
         return 15;
     }
 
-    // Знижка 10% (щасливі години або від 4 чашок)
+    // Знижка 10%
     if (isHappyHour || cupsCount >= 4) {
         return 10;
     }
 
-    // Базова знижка 5% для власників карток лояльності
+    // Знижка 5%
     if (hasLoyaltyCard) {
         return 5;
     }
 
-    // Знижка не надається
     return 0;
 }
 
-// Функція 2: Посимвольний аналіз чеку замовлень кав'ярні за специфікацією
+// Підрахунок напоїв у чеку
 export function countCoffeeOrderTokens(
     receiptText: string,
     drinkPrefix: string,

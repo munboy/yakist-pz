@@ -1,4 +1,4 @@
-// Драйвер тестування функцій кав'ярні методами чорної скриньки
+// Драйвер тестування
 
 import * as readline from 'node:readline';
 import { calculateCoffeeDiscount, countCoffeeOrderTokens } from './functions.ts';
